@@ -1,0 +1,9 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+.game {
+	background-color: rgb(127, 182, 255);
+	height: 100vh;
+}
