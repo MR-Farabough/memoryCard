@@ -1,6 +1,8 @@
 import './styles/App.css';
 import Scoreboard from './components/Scoreboard';
+import CardElements from './CardElements';
 import { useState } from 'react';
+
 interface State {
 	currentScore: number;
 	highScore: number;
@@ -30,12 +32,15 @@ function App() {
 	};
 	return (
 		<div className="game">
-			<Scoreboard
-				currentScore={state.currentScore}
-				highScore={state.highScore}
-			/>
-			<button onClick={correctChoice}>Correct</button>
-			<button onClick={incorrectChoice}>inCorrect</button>
+			<div className="header">
+				<Scoreboard
+					currentScore={state.currentScore}
+					highScore={state.highScore}
+				/>
+				<button onClick={correctChoice}>Correct</button>
+				<button onClick={incorrectChoice}>inCorrect</button>
+			</div>
+			<CardElements />
 		</div>
 	);
 }
