@@ -1,6 +1,6 @@
 import './styles/App.css';
 import Scoreboard from './components/Scoreboard';
-import CardElements from './CardElements';
+import CardElements from './components/CardElements';
 import { useState } from 'react';
 
 interface State {
