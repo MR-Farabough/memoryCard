@@ -3,7 +3,36 @@
 	padding: 0px;
 }
 
+img {
+	height: 300px;
+	width: 300px;
+	border: 4px solid rgb(89, 89, 255);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
 .game {
 	background-color: rgb(127, 182, 255);
-	height: 100vh;
+}
+
+.gameboard {
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 80px;
+}
+
+.card {
+	height: 500px;
+	width: 400px;
+	background-color: blue;
+	padding: 10px;
+	margin: 15px;
+	border-radius: 15px;
+	background-image: linear-gradient(
+		to bottom right,
+		rgb(25, 32, 163),
+		rgb(62, 155, 221)
+	);
 }
