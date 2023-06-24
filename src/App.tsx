@@ -14,6 +14,7 @@ function App() {
 		highScore: 0,
 	};
 	let [state, setState] = useState(initialState);
+	let [gameAction, setGameAction] = useState('');
 	const correctChoice = () => {
 		const newHS =
 			state.currentScore + 1 > state.highScore
@@ -23,13 +24,22 @@ function App() {
 			currentScore: state.currentScore + 1,
 			highScore: newHS,
 		});
+		setGameAction('');
 	};
 	const incorrectChoice = () => {
 		setState({
 			currentScore: 0,
 			highScore: state.highScore,
 		});
+		setGameAction('');
 	};
+	setTimeout(() => {
+		if (gameAction == 'gameover') {
+			incorrectChoice();
+		} else if (gameAction == 'guess') {
+			correctChoice();
+		}
+	}, 100);
 	return (
 		<div className="game">
 			<div className="header">
@@ -37,10 +47,8 @@ function App() {
 					currentScore={state.currentScore}
 					highScore={state.highScore}
 				/>
-				<button onClick={correctChoice}>Correct</button>
-				<button onClick={incorrectChoice}>inCorrect</button>
 			</div>
-			<CardElements />
+			<CardElements AppGameState={setGameAction} />
 		</div>
 	);
 }
