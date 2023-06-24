@@ -34,7 +34,6 @@ function CardElements({ AppGameState }: AppState) {
 		purpleBlueFlower,
 	];
 	const [imageSrcState, setImageSrc] = useState(imgSrc);
-
 	const shuffle = (array: string[]) => {
 		let currentIndex = array.length,
 			randomIndex;
@@ -50,52 +49,35 @@ function CardElements({ AppGameState }: AppState) {
 		return array;
 	};
 	const handleClick = (count: number) => {
-		const chosenCard = document.querySelector(`.card${count}`);
-		if (state.includes(chosenCard)) {
-			setState([]);
-			AppGameState('gameover');
+		const chosenCardImg = document.querySelector<HTMLImageElement>(
+			`.card${count}`
+		)?.firstElementChild;
+		if (chosenCardImg) {
+			if (state.includes(chosenCardImg.src)) {
+				setState([]);
+				AppGameState('gameover');
+			} else {
+				const tempArr = [...state];
+				tempArr.push(chosenCardImg.src);
+				setState(tempArr);
+				AppGameState('guess');
+			}
 			setImageSrc(shuffle(imgSrc));
-			render();
-		} else {
-			const tempArr = [...state];
-			tempArr.push(chosenCard);
-			setState(tempArr);
-			AppGameState('guess');
-			setImageSrc(shuffle(imgSrc));
-			render();
 		}
 	};
 	useEffect(() => {
-		render();
-	}, [imageSrcState]);
-	const render = () => {
-		const newBoard = imageSrcState.map((src, index) => (
-			<div
-				onClick={() => handleClick(index)}
-				key={index}
-				className={`card${index} card`}
-			>
-				<img src={src} alt={`Card${index}`} />
-				<h2>{`Card${index}`}</h2>
-			</div>
-		));
-		setBoard(newBoard);
-	};
-	const [board, setBoard] = useState<React.ReactNode[]>([]);
-	useEffect(() => {
-		setBoard(
-			imageSrcState.map((src, index) => (
-				<div
-					onClick={() => handleClick(index)}
-					key={index}
-					className={`card${index} card`}
-				>
-					<img src={src} alt={`Card${index}`} />
-					<h2>{`Card${index}`}</h2>
-				</div>
-			))
-		);
-	}, [imageSrcState]);
+		setImageSrc(shuffle(imgSrc));
+	}, []);
+	const board = imageSrcState.map((src, index) => (
+		<div
+			onClick={() => handleClick(index)}
+			key={index}
+			className={`card${index} card`}
+		>
+			<img src={src} alt={`Card${index}`} />
+			<h2>{`Card${index}`}</h2>
+		</div>
+	));
 	return <div className="gameboard">{board}</div>;
 }
 
