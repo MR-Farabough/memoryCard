@@ -8995,6 +8995,7 @@ nc(), (bi.exports = ge);
 var Td = bi.exports,
 	Bi = Td;
 (Ql.createRoot = Bi.createRoot), (Ql.hydrateRoot = Bi.hydrateRoot);
+import blueButterfly from './assets/blue-butterfly-b464468e.jpg';
 const Rd = ({ currentScore: e, highScore: n }) =>
 		me.jsxs('div', {
 			className: 'scoreBoard',
@@ -9003,7 +9004,7 @@ const Rd = ({ currentScore: e, highScore: n }) =>
 				me.jsxs('p', { className: 'text', children: ['High Score: ', n] }),
 			],
 		}),
-	Od = './assets/blue-butterfly-b464468e.jpg',
+	Od = blueButterfly,
 	Md = './assets/blue-green-e1c7f743.jpg',
 	jd = './assets/blue-jay.jpg-eebf1315.webp',
 	Dd = './assets/blue-moon-6db95b4f.jpg',
