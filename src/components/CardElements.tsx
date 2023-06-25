@@ -49,9 +49,8 @@ function CardElements({ AppGameState }: AppState) {
 		return array;
 	};
 	const handleClick = (count: number) => {
-		const chosenCardImg = document.querySelector<HTMLImageElement>(
-			`.card${count}`
-		)?.firstElementChild;
+		const chosenCardImg = document.querySelector(`.card${count}`)
+			?.firstElementChild as any;
 		if (chosenCardImg) {
 			if (state.includes(chosenCardImg.src)) {
 				setState([]);
